@@ -10,7 +10,19 @@ export default function CompletionPage () {
   const complete = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    setCompletion("")
+    setPrompt("")
+    try {
+      const response = await fetch('/api/completion', {
+        method: 'POST',
+        headers: {  'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt })
+      })
+      const data = await response.json()
+      setCompletion(data.text)
+      setIsLoading(false)
+    } catch (error) {
+      
+    }
 
   }
 
