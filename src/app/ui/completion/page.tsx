@@ -3,7 +3,16 @@
 import { useState } from "react"
 
 export default function CompletionPage () {
-  const [prompt, setPrompt] = useState("")
+  const [prompt, setPrompt] = useState("") // state for input field
+  const [completion, setCompletion] = useState("")// state for response from API
+  const [isLoading, setIsLoading] = useState(false) // state for loading
+
+  const complete = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsLoading(true)
+    setCompletion("")
+
+  }
 
   return (
     <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
