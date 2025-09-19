@@ -45,7 +45,9 @@ export default function CompletionPage () {
           ) : completion ? (
             <div className="whitespace-pre-wrap">{completion}</div>
           ) : null}
-      <form className="fixed bottom-0 w-full max-w-md mx-auto left-0 right-0 p-4 bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 shadow-lg">
+      <form 
+      onSubmit={complete}
+      className="fixed bottom-0 w-full max-w-md mx-auto left-0 right-0 p-4 bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 shadow-lg">
         <div className="flex gap-2">
           <input 
           value={prompt}
