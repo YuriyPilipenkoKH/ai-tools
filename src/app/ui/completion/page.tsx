@@ -54,7 +54,9 @@ export default function CompletionPage () {
           placeholder="how can I help You?"
           className="flex-1 dark:bg-zinc-800 p-2 border border-zinc-300 dark:border-zinc-700 rounded shadow-xl"/>
           <button type="submit"
-           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">Send</button>
+           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+            Send
+          </button>
         </div>
       </form>
     </div>
