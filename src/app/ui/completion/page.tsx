@@ -20,6 +20,9 @@ export default function CompletionPage () {
         body: JSON.stringify({ prompt })
       })
       const data = await response.json()
+      if (!response.ok) {
+        throw new Error(data.error || 'Something went wrong')
+      }
       setCompletion(data.text)
       } 
     catch (error) {
