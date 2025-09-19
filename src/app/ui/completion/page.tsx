@@ -1,11 +1,13 @@
 "use client"
 
+import { log } from "console"
 import { useState } from "react"
 
 export default function CompletionPage () {
   const [prompt, setPrompt] = useState("") // state for input field
   const [completion, setCompletion] = useState("")// state for response from API
   const [isLoading, setIsLoading] = useState(false) // state for loading
+  const [error, setError] = useState<string | null>(null) // state for error handling
 
   const complete = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -19,9 +21,12 @@ export default function CompletionPage () {
       })
       const data = await response.json()
       setCompletion(data.text)
+      } 
+    catch (error) {
+      console.log(error);
+    }
+    finally{
       setIsLoading(false)
-    } catch (error) {
-      
     }
 
   }
