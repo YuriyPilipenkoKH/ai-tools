@@ -1,0 +1,27 @@
+.container {
+  @apply flex flex-col w-full max-w-md py-24 mx-auto stretch;
+}
+
+.error {
+  @apply text-red-800 mb-4;
+}
+
+.loading {
+  @apply whitespace-pre-wrap;
+}
+
+.form {
+  @apply fixed bottom-0 w-full max-w-md mx-auto left-0 right-0 p-4 bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 shadow-lg;
+}
+
+.inputContainer {
+  @apply flex gap-2;
+}
+
+.input {
+  @apply flex-1 dark:bg-zinc-800 p-2 border border-zinc-300 dark:border-zinc-700 rounded shadow-xl;
+}
+
+.button {
+  @apply bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+}
