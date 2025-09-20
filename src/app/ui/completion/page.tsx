@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import styles from '../styles/ChatInterface.module.css';
+
 
 export default function CompletionPage () {
   const [prompt, setPrompt] = useState("") // state for input field
@@ -38,25 +38,25 @@ export default function CompletionPage () {
   }
 
   return (
-    <div className={styles.container}>
-        {error && <div className={styles.error}>{error}</div>}
+    <div className='chat-container'>
+        {error && <div className='chat-error'>{error}</div>}
         {isLoading ? (
             <div>Loading...</div>
           ) : completion ? (
-            <div className={styles.loading}>{completion}</div>
+            <div className='chat-loading'>{completion}</div>
           ) : null}
       <form 
       onSubmit={complete}
-      className={styles.form}>
-        <div className={styles.inputContainer}>
+      className='chat-form'>
+        <div className='input-container'>
           <input 
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           type="text" 
           placeholder="how can I help You?"
-          className={styles.input}/>
+          className='chat-input'/>
           <button type="submit"
-           className={styles.button}>
+           className='chat-button'>
             Send
           </button>
         </div>
