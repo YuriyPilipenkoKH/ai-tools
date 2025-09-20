@@ -14,7 +14,7 @@ export async function POST(req: Request) {
   
     return Response.json({text})
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return Response.json({error: 'Failed to generate text'}, {status: 500})
   }
 }
