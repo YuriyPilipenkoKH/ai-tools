@@ -40,12 +40,22 @@ function StreamPage() {
           type="text" 
           placeholder="how can I help You?"
           className={chatClasses.input}/>
-          <button 
-            type="submit"
-            className={chatClasses.streamButton}
-            disabled={isLoading}>
-            Send
-          </button>
+          {isLoading ? (
+            <button
+              onClick={stop}
+              className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors"
+            >
+              Stop
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={isLoading}
+            >
+              Send
+            </button>
+          )}
         </div>
       </form>
     </div>
