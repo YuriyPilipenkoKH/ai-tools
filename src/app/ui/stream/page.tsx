@@ -1,12 +1,9 @@
 "use client"
 
 import { chatClasses } from "@/models/chatClasses"
-import { useState } from "react"
 import { useCompletion } from "@ai-sdk/react"
 
 function StreamPage() {
-    const [prompt, setPrompt] = useState("") // state for input field
-
   
     const {
       input, 
@@ -15,39 +12,17 @@ function StreamPage() {
       completion,
       isLoading,
       error,
+      stop,
+      setInput,
     }= useCompletion({
       api: '/api/stream',
     })
 
-    // const complete = async (e: React.FormEvent) => {
-    //   e.preventDefault()
-    //   setIsLoading(true)
-    //   setCompletion("")
-    //   setPrompt("")   
-    //   setError(null)   
-    //   try {
-    //     const response = await fetch('/api/stream', {
-    //       method: 'POST',
-    //       headers: {  'Content-Type': 'application/json' },
-    //       body: JSON.stringify({ prompt })
-    //     })
-    //     const data = await response.json()
-    //     if (!response.ok) {
-    //       throw new Error(data.error || 'Something went wrong')
-    //     }
-    //     setCompletion(data.text)
-    //     } 
-    //   catch (error) {
-    //     console.log(error);
-    //     if (error instanceof Error) {
-    //       setError(error.message || 'Something went wrong, please try again.')
-    //     }
-    //   }
-    //   finally{
-    //     setIsLoading(false)
-    //   }
-  
-    // }
+    const submit = async (e: React.FormEvent) => {
+      e.preventDefault()
+      setInput(""); // temporary fix to clear the input after submission
+      handleSubmit(e);
+      }
   
   return (
     <div className={chatClasses.container}>
@@ -56,12 +31,12 @@ function StreamPage() {
       {completion && <div className="whitespace-pre-wrap">{completion}</div>}
 
       <form 
-      onSubmit={handleSubmit}
+      onSubmit={submit}
       className={chatClasses.form}>
         <div className={chatClasses.inputContainer}>
           <input 
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
+            value={input}
+            onChange={handleInputChange}
           type="text" 
           placeholder="how can I help You?"
           className={chatClasses.input}/>
