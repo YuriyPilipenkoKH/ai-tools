@@ -51,7 +51,7 @@ function StreamPage() {
   
   return (
     <div className={chatClasses.container}>
-      {error && <div className={chatClasses.error}>{error}</div>}
+      {error && <div className={chatClasses.error}>{error.message}</div>}
       {isLoading && !completion && <div>Loading...</div>}
       {completion && <div className="whitespace-pre-wrap">{completion}</div>}
 
