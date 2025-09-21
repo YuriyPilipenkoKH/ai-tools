@@ -7,6 +7,7 @@ export const chatClasses = {
   input: 'chat-input',
   button: 'chat-button',
   streamButton: 'stream-button',
+  stopButton: 'stop-button',
 } as const;
 
 // Create a type from the values

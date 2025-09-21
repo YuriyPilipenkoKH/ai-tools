@@ -43,14 +43,14 @@ function StreamPage() {
           {isLoading ? (
             <button
               onClick={stop}
-              className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors"
+              className={chatClasses.stopButton}
             >
               Stop
             </button>
           ) : (
             <button
               type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className={chatClasses.button}
               disabled={isLoading}
             >
               Send
