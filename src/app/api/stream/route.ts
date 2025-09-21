@@ -11,6 +11,16 @@ export async function POST(req: Request) {
       model: openai('gpt-4o-mini'),
       prompt,
     })
+
+        // Log token usage after streaming completes
+    stream.usage.then((usage) => {
+      console.log({
+        inputTokens: usage.inputTokens,
+        outputTokens: usage.outputTokens,
+        totalTokens: usage.totalTokens,
+      });
+    });
+
     return stream.toUIMessageStreamResponse()
     
   } catch (error) {
