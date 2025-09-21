@@ -1,5 +1,6 @@
 "use client"
 
+import { chatClasses } from "@/models/chatClasses"
 import { useState } from "react"
 
 
@@ -43,7 +44,7 @@ export default function CompletionPage () {
         {isLoading ? (
             <div>Loading...</div>
           ) : completion ? (
-            <div className='chat-loading'>{completion}</div>
+            <div className={chatClasses.loading}>{completion}</div>
           ) : null}
       <form 
       onSubmit={complete}

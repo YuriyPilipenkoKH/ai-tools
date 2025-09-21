@@ -45,7 +45,7 @@ function StreamPage() {
         {isLoading ? (
             <div>Loading...</div>
           ) : completion ? (
-            <div className='chat-loading'>{completion}</div>
+            <div className={chatClasses.loading}>{completion}</div>
           ) : null}
       <form 
       onSubmit={complete}
