@@ -1,6 +1,7 @@
 export const chatClasses = {
   container: 'chat-container',
   error: 'chat-error',
+  loading: 'chat-loading',
   form: 'chat-form',
   inputContainer: 'input-container',
   input: 'chat-input',
