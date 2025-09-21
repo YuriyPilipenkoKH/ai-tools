@@ -1,5 +1,6 @@
 "use client"
 
+import { chatClasses } from "@/models/chatClasses"
 import { useState } from "react"
 
 function StreamPage() {
@@ -39,8 +40,8 @@ function StreamPage() {
     }
   
   return (
-        <div className='chat-container'>
-        {error && <div className='chat-error'>{error}</div>}
+        <div className={chatClasses.container}>
+        {error && <div className={chatClasses.error}>{error}</div>}
         {isLoading ? (
             <div>Loading...</div>
           ) : completion ? (
@@ -48,16 +49,16 @@ function StreamPage() {
           ) : null}
       <form 
       onSubmit={complete}
-      className='chat-form'>
-        <div className='input-container'>
+      className={chatClasses.form}>
+        <div className={chatClasses.inputContainer}>
           <input 
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           type="text" 
           placeholder="how can I help You?"
-          className='chat-input'/>
+          className={chatClasses.input}/>
           <button type="submit"
-           className='stream-button'>
+           className={chatClasses.streamButton}>
             Send
           </button>
         </div>
