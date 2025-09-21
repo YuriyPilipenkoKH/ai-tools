@@ -1,9 +1,11 @@
 import { streamText } from "ai";
 import { openai } from "@ai-sdk/openai";
 
+
 export async function POST(req: Request) {
   try {
     const {prompt} = await  req.json()
+    // console.log(prompt);
     if (!prompt || typeof prompt !== 'string') {
       return Response.json({error: 'Invalid prompt'}, {status: 400})
     }
