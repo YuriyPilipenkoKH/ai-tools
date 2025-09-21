@@ -6,54 +6,56 @@ import { useCompletion } from "@ai-sdk/react"
 
 function StreamPage() {
     const [prompt, setPrompt] = useState("") // state for input field
-    const [completion, setCompletion] = useState("")// state for response from API
-    const [isLoading, setIsLoading] = useState(false) // state for loading
     const [error, setError] = useState<string | null>(null) // state for error handling
   
-    const {input, handleInputChange}= useCompletion({
+    const {
+      input, 
+      handleInputChange,
+      handleSubmit,
+      completion,
+      isLoading
+    }= useCompletion({
       api: '/api/stream',
     })
 
-    const complete = async (e: React.FormEvent) => {
-      e.preventDefault()
-      setIsLoading(true)
-      setCompletion("")
-      setPrompt("")   
-      setError(null)   
-      try {
-        const response = await fetch('/api/stream', {
-          method: 'POST',
-          headers: {  'Content-Type': 'application/json' },
-          body: JSON.stringify({ prompt })
-        })
-        const data = await response.json()
-        if (!response.ok) {
-          throw new Error(data.error || 'Something went wrong')
-        }
-        setCompletion(data.text)
-        } 
-      catch (error) {
-        console.log(error);
-        if (error instanceof Error) {
-          setError(error.message || 'Something went wrong, please try again.')
-        }
-      }
-      finally{
-        setIsLoading(false)
-      }
+    // const complete = async (e: React.FormEvent) => {
+    //   e.preventDefault()
+    //   setIsLoading(true)
+    //   setCompletion("")
+    //   setPrompt("")   
+    //   setError(null)   
+    //   try {
+    //     const response = await fetch('/api/stream', {
+    //       method: 'POST',
+    //       headers: {  'Content-Type': 'application/json' },
+    //       body: JSON.stringify({ prompt })
+    //     })
+    //     const data = await response.json()
+    //     if (!response.ok) {
+    //       throw new Error(data.error || 'Something went wrong')
+    //     }
+    //     setCompletion(data.text)
+    //     } 
+    //   catch (error) {
+    //     console.log(error);
+    //     if (error instanceof Error) {
+    //       setError(error.message || 'Something went wrong, please try again.')
+    //     }
+    //   }
+    //   finally{
+    //     setIsLoading(false)
+    //   }
   
-    }
+    // }
   
   return (
-        <div className={chatClasses.container}>
-        {error && <div className={chatClasses.error}>{error}</div>}
-        {isLoading ? (
-            <div>Loading...</div>
-          ) : completion ? (
-            <div className={chatClasses.loading}>{completion}</div>
-          ) : null}
+    <div className={chatClasses.container}>
+      {error && <div className={chatClasses.error}>{error}</div>}
+      {isLoading && !completion && <div>Loading...</div>}
+      {completion && <div className="whitespace-pre-wrap">{completion}</div>}
+
       <form 
-      onSubmit={complete}
+      onSubmit={handleSubmit}
       className={chatClasses.form}>
         <div className={chatClasses.inputContainer}>
           <input 
@@ -62,8 +64,10 @@ function StreamPage() {
           type="text" 
           placeholder="how can I help You?"
           className={chatClasses.input}/>
-          <button type="submit"
-           className={chatClasses.streamButton}>
+          <button 
+            type="submit"
+            className={chatClasses.streamButton}
+            disabled={isLoading}>
             Send
           </button>
         </div>
