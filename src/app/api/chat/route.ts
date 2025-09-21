@@ -11,9 +11,10 @@ export async function POST(req: Request) {
      model: openai('gpt-4o-mini'),
       messages: convertToModelMessages(messages),
     })
+    return stream.toUIMessageStreamResponse() 
 
   } catch (error) {
     console.error(error);
-    return Response.json({error: 'Failed to stream text'}, {status: 500})
+    return Response.json({error: 'Failed to stream chat completion'}, {status: 500})
   }   
 }
