@@ -2,6 +2,7 @@
 
 import { chatClasses } from "@/models/chatClasses"
 import { useState } from "react"
+import { useCompletion } from "@ai-sdk/react"
 
 function StreamPage() {
     const [prompt, setPrompt] = useState("") // state for input field
@@ -9,6 +10,10 @@ function StreamPage() {
     const [isLoading, setIsLoading] = useState(false) // state for loading
     const [error, setError] = useState<string | null>(null) // state for error handling
   
+    const {input, handleInputChange}= useCompletion({
+      api: '/api/stream',
+    })
+
     const complete = async (e: React.FormEvent) => {
       e.preventDefault()
       setIsLoading(true)
