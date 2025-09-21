@@ -1,4 +1,4 @@
-import { UIMessage , streamText} from "ai";
+import { UIMessage , streamText ,convertToModelMessages} from "ai";
 import { openai } from "@ai-sdk/openai";
 
 export async function POST(req: Request) {
@@ -9,9 +9,9 @@ export async function POST(req: Request) {
     }
     const stream = streamText({
      model: openai('gpt-4o-mini'),
-      messages,
+      messages: convertToModelMessages(messages),
     })
-    
+
   } catch (error) {
     console.error(error);
     return Response.json({error: 'Failed to stream text'}, {status: 500})
