@@ -8,7 +8,7 @@ export async function POST(req: Request) {
       return Response.json({error: 'Invalid prompt'}, {status: 400})
     }
     const stream = streamText({
-      model: openai('gpt-4'),
+      model: openai('gpt-4o-mini'),
       prompt,
     })
     return stream.toUIMessageStreamResponse()

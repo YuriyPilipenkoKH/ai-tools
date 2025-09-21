@@ -11,9 +11,11 @@ function StreamPage() {
     const complete = async (e: React.FormEvent) => {
       e.preventDefault()
       setIsLoading(true)
-      setPrompt("")
+      setCompletion("")
+      setPrompt("")   
+      setError(null)   
       try {
-        const response = await fetch('/api/completion', {
+        const response = await fetch('/api/stream', {
           method: 'POST',
           headers: {  'Content-Type': 'application/json' },
           body: JSON.stringify({ prompt })
