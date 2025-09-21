@@ -8,9 +8,9 @@ function StreamPage() {
     const {
       input, 
       handleInputChange,
-      handleSubmit,
       completion,
       isLoading,
+      handleSubmit,
       error,
       stop,
       setInput,
@@ -38,7 +38,7 @@ function StreamPage() {
             value={input}
             onChange={handleInputChange}
           type="text" 
-          placeholder="how can I help You?"
+          placeholder="Ask me anything..."
           className={chatClasses.input}/>
           {isLoading ? (
             <button
