@@ -6,14 +6,15 @@ import { useCompletion } from "@ai-sdk/react"
 
 function StreamPage() {
     const [prompt, setPrompt] = useState("") // state for input field
-    const [error, setError] = useState<string | null>(null) // state for error handling
+
   
     const {
       input, 
       handleInputChange,
       handleSubmit,
       completion,
-      isLoading
+      isLoading,
+      error,
     }= useCompletion({
       api: '/api/stream',
     })
