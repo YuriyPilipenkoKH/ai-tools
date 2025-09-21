@@ -54,10 +54,10 @@ function StreamPage() {
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           type="text" 
-          placeholder="how can I help You streaming?"
+          placeholder="how can I help You?"
           className='chat-input'/>
           <button type="submit"
-           className='chat-button'>
+           className='stream-button'>
             Send
           </button>
         </div>
