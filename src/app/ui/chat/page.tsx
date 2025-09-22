@@ -1,8 +1,11 @@
 "use client"
-
 import { chatClasses } from "@/models/chatClasses"
+import { useState } from "react"
+import { useChat } from "@ai-sdk/react"
 
 function ChatPage() {
+    const [input, setInput] = useState("") 
+    const {messages}=useChat()
   return (
      <div className={chatClasses.container}>
            {/* {error && <div className={chatClasses.error}>{error}</div>} */}

@@ -1,8 +1,6 @@
 "use client"
-
 import { chatClasses } from "@/models/chatClasses"
 import { useState } from "react"
-
 
 export default function CompletionPage () {
   const [prompt, setPrompt] = useState("") // state for input field
