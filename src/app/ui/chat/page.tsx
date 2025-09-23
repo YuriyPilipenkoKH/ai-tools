@@ -28,7 +28,7 @@ function ChatPage() {
                 return (
                   <div
                     key={`${message.id}-${index}`}
-                    className="whitespace-pre-wrap"
+                    className={chatClasses.space}
                   >
                     {part.text}
                   </div>
@@ -43,7 +43,7 @@ function ChatPage() {
       {(status === "submitted" || status === "streaming") && (
         <div className="mb-4">
           <div className={cn(chatClasses.loading, "items-center ")}>
-            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-400"></div>
+            <div className={chatClasses.spinner}></div>
           </div>
         </div>
       )}
