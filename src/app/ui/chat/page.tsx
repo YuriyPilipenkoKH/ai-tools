@@ -5,7 +5,13 @@ import { useChat } from "@ai-sdk/react"
 
 function ChatPage() {
     const [input, setInput] = useState("") 
-    const {messages}=useChat()
+    const { messages, sendMessage, status, error, stop }= useChat()
+
+    const submit = (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      sendMessage({ text: input });
+      setInput("");
+  };
   return (
      <div className={chatClasses.container}>
            {/* {error && <div className={chatClasses.error}>{error}</div>} */}
