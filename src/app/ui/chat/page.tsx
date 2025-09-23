@@ -14,12 +14,14 @@ function ChatPage() {
   };
   return (
      <div className={chatClasses.container}>
-           {/* {error && <div className={chatClasses.error}>{error}</div>} */}
-           {/* {isLoading ? (
-               <div>Loading...</div>
-             ) : completion ? (
-               <div className={chatClasses.loading}>{completion}</div>
-             ) : null} */}
+      {error && <div className={chatClasses.error}>{error.message}</div>}
+      {(status === "submitted" || status === "streaming") && (
+        <div className="mb-4">
+          <div className="flex items-center gap-2">
+            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-400"></div>
+          </div>
+        </div>
+      )}
          <form 
         //  onSubmit={complete}
          className={chatClasses.form}>
