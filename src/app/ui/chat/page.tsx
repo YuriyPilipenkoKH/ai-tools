@@ -2,6 +2,7 @@
 import { chatClasses } from "@/models/chatClasses"
 import { useState } from "react"
 import { useChat } from "@ai-sdk/react"
+import { cn } from "@/lib/cn"
 
 function ChatPage() {
     const [input, setInput] = useState("") 
@@ -41,7 +42,7 @@ function ChatPage() {
 
       {(status === "submitted" || status === "streaming") && (
         <div className="mb-4">
-          <div className="flex items-center gap-2">
+          <div className={cn(chatClasses.loading, "items-center ")}>
             <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-400"></div>
           </div>
         </div>
@@ -59,14 +60,14 @@ function ChatPage() {
           {status === "submitted" || status === "streaming" ? (
             <button
               onClick={stop}
-              className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors"
+              className={chatClasses.stopButton}
             >
               Stop
             </button>
           ) : (
             <button
               type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className={chatClasses.button}
               disabled={status !== "ready"}
             >
               Send

@@ -8,6 +8,9 @@
     @apply text-red-800 mb-4
   }
   .chat-loading {
+    @apply flex gap-2 items-center
+  }
+  .chat-space {
     @apply whitespace-pre-wrap mb-4
   }
   
