@@ -13,6 +13,9 @@
   .chat-space {
     @apply whitespace-pre-wrap mb-4
   }
+  .chat-spinner {
+    @apply animate-spin rounded-full h-4 w-4 border-b-2 border-blue-400
+  }
   
   .chat-form {
     @apply fixed bottom-0 w-full max-w-md mx-auto left-0 right-0 p-4 bg-zinc-50 dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 shadow-lg
