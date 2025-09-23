@@ -7,11 +7,20 @@ export async function POST(req: Request) {
     if (!messages || typeof messages !== 'string') {
       return Response.json({error: 'Invalid prompt'}, {status: 400})
     }
-    const stream = streamText({
-     model: openai('gpt-4o-mini'),
-      messages: convertToModelMessages(messages),
-    })
-    return stream.toUIMessageStreamResponse() 
+ const result = streamText({
+      model: openai("gpt-5-nano"),
+      messages: [
+        {
+          role: "system",
+          content:
+            "You are a helpful coding assistant. Keep responses under 3 sentences and focus on practical examples.",
+        },
+        ...convertToModelMessages(messages),
+      ],
+    });
+
+    
+    return result.toUIMessageStreamResponse() 
 
   } catch (error) {
     console.error(error);

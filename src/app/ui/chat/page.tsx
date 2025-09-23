@@ -12,7 +12,7 @@ function ChatPage() {
       e.preventDefault();
       sendMessage({ text: input });
       setInput("");
-  };
+    }
   return (
      <div className={chatClasses.container}>
       {error && <div className={chatClasses.error}>{error.message}</div>}
