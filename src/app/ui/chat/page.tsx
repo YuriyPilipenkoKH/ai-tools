@@ -23,12 +23,12 @@ function ChatPage() {
         </div>
       )}
          <form 
-        //  onSubmit={complete}
+         onSubmit={submit}
          className={chatClasses.form}>
            <div className={chatClasses.inputContainer}>
              <input 
-            //  value={prompt}
-            //  onChange={(e) => setPrompt(e.target.value)}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
              type="text" 
              placeholder="how can I help You?"
              className={chatClasses.input}/>
