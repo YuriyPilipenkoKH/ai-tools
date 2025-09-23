@@ -15,6 +15,30 @@ function ChatPage() {
   return (
      <div className={chatClasses.container}>
       {error && <div className={chatClasses.error}>{error.message}</div>}
+
+      {messages.map((message) => (
+        <div key={message.id} className="mb-4">
+          <div className="font-semibold">
+            {message.role === "user" ? "You:" : "AI:"}
+          </div>
+          {message.parts.map((part, index) => {
+            switch (part.type) {
+              case "text":
+                return (
+                  <div
+                    key={`${message.id}-${index}`}
+                    className="whitespace-pre-wrap"
+                  >
+                    {part.text}
+                  </div>
+                );
+              default:
+                return null;
+            }
+          })}
+        </div>
+      ))}
+
       {(status === "submitted" || status === "streaming") && (
         <div className="mb-4">
           <div className="flex items-center gap-2">
