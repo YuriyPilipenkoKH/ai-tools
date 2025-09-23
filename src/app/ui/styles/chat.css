@@ -10,7 +10,7 @@
   .chat-loading {
     @apply flex gap-2 items-center
   }
-  .chat-space {
+  .space {
     @apply whitespace-pre-wrap mb-4
   }
   .chat-spinner {

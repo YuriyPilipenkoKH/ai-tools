@@ -2,6 +2,8 @@ export const chatClasses = {
   container: 'chat-container',
   error: 'chat-error',
   loading: 'chat-loading',
+  spinner: 'chat-spinner',
+  space: 'space',
   form: 'chat-form',
   inputContainer: 'input-container',
   input: 'chat-input',
