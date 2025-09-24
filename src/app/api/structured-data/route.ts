@@ -3,6 +3,7 @@ import { openai } from "@ai-sdk/openai";
 import { recipeSchema } from "./schems";
 
 export async function POST(req: Request) {
+   try {
     const { dish } = await req.json();
 
     const result = streamObject({
@@ -12,4 +13,8 @@ export async function POST(req: Request) {
     });
 
     return result.toTextStreamResponse();
+  } catch (error) {
+    console.error(error);
+    return new Response("Failed to generate recipe", { status: 500 });
+  }
 }
