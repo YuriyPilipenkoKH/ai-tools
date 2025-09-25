@@ -1,9 +1,13 @@
-import React from 'react'
+"use client"
+import { useState } from "react"
 
-function StructuredPage() {
+
+function StructuredDataPage() {
+  const [dishName, setDishName] = useState("");
+
   return (
-    <div>StructuredPage</div>
+    <div>StructuredDataPage</div>
   )
 }
 
-export default StructuredPage
+export default StructuredDataPage
