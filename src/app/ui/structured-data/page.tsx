@@ -6,7 +6,15 @@ function StructuredDataPage() {
   const [dishName, setDishName] = useState("");
 
   return (
-    <div>StructuredDataPage</div>
+    <div>
+      <form >
+        <input 
+        placeholder="Enter a dish name..."/>
+        <button
+         type="submit">
+          Grnerate</button>
+      </form>
+    </div>
   )
 }
 
