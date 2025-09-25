@@ -8,16 +8,18 @@ function StructuredDataPage() {
 
   return (
      <div className={chatClasses.container}>
-         <form 
+      <form 
         //  onSubmit={submit}
-         className={chatClasses.form}>
-        <input 
-          placeholder="Enter a dish name..."
-          className={chatClasses.input}/>
-        <button
-          className={chatClasses.button}
-          type="submit">
-          Grnerate</button>
+        className={chatClasses.form}>
+        <div className={chatClasses.inputContainer}>
+          <input 
+            placeholder="Enter a dish name..."
+            className={chatClasses.input}/>
+          <button
+            className={chatClasses.button}
+            type="submit">
+            Grnerate</button>
+        </div>
       </form>
     </div>
   )
