@@ -1,11 +1,17 @@
 "use client"
 import { chatClasses } from "@/models/chatClasses";
 import { useState } from "react"
+import { experimental_useObject as useObject} from "@ai-sdk/react";
+import { recipeSchema } from "@/app/api/structured-data/schems";
 
 
 function StructuredDataPage() {
   const [dishName, setDishName] = useState("");
+  const recipe = useObject({
+    api: "/api/structured-data",
+    schema: recipeSchema, 
 
+  });
   return (
      <div className={chatClasses.container}>
       <form 
