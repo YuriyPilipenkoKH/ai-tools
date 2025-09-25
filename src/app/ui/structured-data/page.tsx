@@ -8,7 +8,7 @@ import { recipeSchema } from "@/app/api/structured-data/schems";
 function StructuredDataPage() {
   const [dishName, setDishName] = useState("");
 
-  const {submit} = useObject({
+   const { submit, object, isLoading, error, stop } = useObject({
     api: "/api/structured-data",
     schema: recipeSchema, 
   });
@@ -21,7 +21,7 @@ function StructuredDataPage() {
   return (
      <div className={chatClasses.container}>
       <form 
-        //  onSubmit={submit}
+         onSubmit={handleSubmit}
         className={chatClasses.form}>
         <div className={chatClasses.inputContainer}>
           <input 
