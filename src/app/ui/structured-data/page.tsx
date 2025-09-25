@@ -20,6 +20,7 @@ function StructuredDataPage() {
   };
   return (
      <div className={chatClasses.container}>
+      {error && <div className={chatClasses.error}>{error.message}</div>}
       <form 
          onSubmit={handleSubmit}
         className={chatClasses.form}>
