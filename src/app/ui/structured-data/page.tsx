@@ -13,6 +13,9 @@ function StructuredDataPage() {
         className={chatClasses.form}>
         <div className={chatClasses.inputContainer}>
           <input 
+            type="text"
+            value={dishName}
+            onChange={(e) => setDishName(e.target.value)}
             placeholder="Enter a dish name..."
             className={chatClasses.input}/>
           <button
