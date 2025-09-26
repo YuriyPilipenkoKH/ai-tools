@@ -77,7 +77,7 @@ function StructuredDataPage() {
             <button
               type="button"
               onClick={stop}
-              className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className={chatClasses.stopButton}
             >
               Stop
             </button>
@@ -85,7 +85,7 @@ function StructuredDataPage() {
             <button
               type="submit"
               disabled={isLoading || !dishName}
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className={chatClasses.button}
             >
               {isLoading ? "Generating..." : "Generate"}
             </button>
