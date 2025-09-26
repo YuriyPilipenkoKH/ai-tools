@@ -73,10 +73,23 @@ function StructuredDataPage() {
             onChange={(e) => setDishName(e.target.value)}
             placeholder="Enter a dish name..."
             className={chatClasses.input}/>
-          <button
-            className={chatClasses.button}
-            type="submit">
-            Grnerate</button>
+        {isLoading ? (
+            <button
+              type="button"
+              onClick={stop}
+              className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Stop
+            </button>
+          ) : (
+            <button
+              type="submit"
+              disabled={isLoading || !dishName}
+              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isLoading ? "Generating..." : "Generate"}
+            </button>
+          )}
         </div>
       </form>
     </div>
