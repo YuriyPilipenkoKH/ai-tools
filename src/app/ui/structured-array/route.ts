@@ -11,7 +11,10 @@ export async function POST(req: Request) {
       output: 'enum',
       enum: [{ name: "string", abilities: ["string"] }],
     })
+
+    return result.toJsonResponse();
   } catch (error) {
-    
+    console.error(error);
+    return new Response("Failed to generate structured array", { status: 500 });
   }
 }
