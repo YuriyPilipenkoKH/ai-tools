@@ -4,12 +4,18 @@ import { experimental_useObject as useObject} from "@ai-sdk/react";
 import { structuredArraySchema } from "./schema";
 
 function StructuredArrayPage() {
-    const [type, setType] = useState("");
+  const [type, setType] = useState("");
   
-     const { submit, object, isLoading, error, stop } = useObject({
+  const { submit, object, isLoading, error, stop } = useObject({
       api: "/api/structured-array",
       schema: structuredArraySchema, 
     });
+
+  const handleSubmit = (e: React.FormEvent) => {
+      e.preventDefault();
+      submit({ type });
+      setType("");
+  };
   return (
     <div>StructuredArrayPage</div>
   )
