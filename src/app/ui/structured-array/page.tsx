@@ -34,6 +34,23 @@ function StructuredArrayPage() {
             placeholder="Enter a type..."
             className={chatClasses.input}
           />
+           {isLoading ? (
+            <button
+              type="button"
+              onClick={stop}
+              className={chatClasses.stopButton}
+            >
+              Stop
+            </button>
+          ) : (
+            <button
+              type="submit"
+              disabled={isLoading || !type.trim()}
+              className={chatClasses.button}
+            >
+              Generate
+            </button>
+          )}
              </div>
         </form>
       </div>
