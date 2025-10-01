@@ -2,6 +2,7 @@
 import { useState } from "react"
 import { experimental_useObject as useObject} from "@ai-sdk/react";
 import { structuredArraySchema } from "./schema";
+import { chatClasses } from "@/models/chatClasses";
 
 function StructuredArrayPage() {
   const [type, setType] = useState("");
@@ -17,7 +18,14 @@ function StructuredArrayPage() {
       setType("");
   };
   return (
-    <div>StructuredArrayPage</div>
+    <div className={chatClasses.container}>
+        {error && <div className={chatClasses.error}>{error.message}</div>}
+
+      <div className="space-y-8">
+        
+      </div>
+
+    </div>
   )
 }
 
