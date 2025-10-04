@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react"
 import { experimental_useObject as useObject} from "@ai-sdk/react";
-import { structuredArraySchema } from "./schema";
+import {  Pokemon, structuredArraySchema } from "./schema";
 import { chatClasses } from "@/models/chatClasses";
 
 function StructuredArrayPage() {
@@ -18,23 +18,42 @@ function StructuredArrayPage() {
       setType("");
   };
   return (
-    <div className={chatClasses.container}>
-        {error && <div className={chatClasses.error}>{error.message}</div>}
+   <div className={chatClasses.container}>
+      {error && <div className={chatClasses.error}>{error.message}</div>}
 
       <div className="space-y-8">
-        <form
-          onSubmit={handleSubmit}
-          className={chatClasses.form}
-        >
-          <div className={chatClasses.inputContainer}>
-            <input
+        {object?.map((pokemon: Pokemon) => (
+          <div
+            key={pokemon?.name}
+            className="bg-zinc-50 dark:bg-zinc-800 p-6 rounded-lg shadow-sm"
+          >
+            <h2 className="text-2xl font-bold mb-4">{pokemon?.name}</h2>
+            <div className="grid grid-cols-2 gap-4">
+              {pokemon?.abilities?.map((ability) => (
+                <div
+                  key={ability}
+                  className="bg-zinc-100 dark:bg-zinc-700 p-3 rounded-md"
+                >
+                  {ability}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <form
+        onSubmit={handleSubmit}
+       className={chatClasses.form}>
+        <div className={chatClasses.inputContainer}>
+          <input
             type="text"
             value={type}
             onChange={(e) => setType(e.target.value)}
             placeholder="Enter a type..."
             className={chatClasses.input}
           />
-           {isLoading ? (
+          {isLoading ? (
             <button
               type="button"
               onClick={stop}
@@ -51,12 +70,9 @@ function StructuredArrayPage() {
               Generate
             </button>
           )}
-             </div>
-        </form>
-      </div>
-
+        </div>
+      </form>
     </div>
-  )
+  );
 }
-
 export default StructuredArrayPage

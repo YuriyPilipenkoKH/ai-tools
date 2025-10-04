@@ -7,4 +7,9 @@ export const structuredArraySchema = z.object({
 
 export const structuredArrayUISchema = z.array(structuredArraySchema)
 
-export type StructuredArray = z.infer<typeof structuredArraySchema>;
+export type Pokemon = z.infer<typeof structuredArraySchema>;
+
+// export type Pokemon = {
+//   name: string;
+//   abilities: string[];
+// };
