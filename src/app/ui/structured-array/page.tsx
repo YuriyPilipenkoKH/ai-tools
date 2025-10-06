@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react"
 import { experimental_useObject as useObject} from "@ai-sdk/react";
-import {  Pokemon, structuredArraySchema } from "./schema";
+import { pokemonUISchema} from "./schema";
 import { chatClasses } from "@/models/chatClasses";
 
 function StructuredArrayPage() {
@@ -9,7 +9,7 @@ function StructuredArrayPage() {
   
   const { submit, object, isLoading, error, stop } = useObject({
       api: "/api/structured-array",
-      schema: structuredArraySchema, 
+      schema: pokemonUISchema, 
     });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -22,7 +22,7 @@ function StructuredArrayPage() {
       {error && <div className={chatClasses.error}>{error.message}</div>}
 
       <div className="space-y-8">
-        {object?.map((pokemon: Pokemon) => (
+        {object?.map((pokemon) => (
           <div
             key={pokemon?.name}
             className="bg-zinc-50 dark:bg-zinc-800 p-6 rounded-lg shadow-sm"
